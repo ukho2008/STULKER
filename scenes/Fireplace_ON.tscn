@@ -1,0 +1,43 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://textures/Wood1.png" type="Texture" id=1]
+[ext_resource path="res://models/Fireplace/Fireplace.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://textures/Fireplace.png" type="Texture" id=3]
+[ext_resource path="res://textures/Brick1.png" type="Texture" id=4]
+[ext_resource path="res://textures/Bark1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Fire.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.472466
+height = 1.06378
+
+[node name="fireplace_ON" type="Spatial"]
+
+[node name="Fireplace" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = SubResource( 6 )
+material/1 = SubResource( 7 )
+material/2 = SubResource( 8 )
+material/3 = SubResource( 9 )
+
+[node name="StaticBody" type="StaticBody" parent="Fireplace"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Fireplace/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.379257, 0 )
+shape = SubResource( 5 )
+
+[node name="Fire" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484697, 0 )

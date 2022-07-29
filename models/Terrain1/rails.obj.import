@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rails.obj-05529974fa194c0662b703bb0e8da92b.mesh"
+
+[deps]
+
+files=[ "res://.import/rails.obj-05529974fa194c0662b703bb0e8da92b.mesh" ]
+
+source_file="res://models/Terrain1/rails.obj"
+dest_files=[ "res://.import/rails.obj-05529974fa194c0662b703bb0e8da92b.mesh", "res://.import/rails.obj-05529974fa194c0662b703bb0e8da92b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

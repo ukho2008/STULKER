@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/kordon7.obj-4439dc78cc2841da932d96a3889cc363.mesh"
+
+[deps]
+
+files=[ "res://.import/kordon7.obj-4439dc78cc2841da932d96a3889cc363.mesh" ]
+
+source_file="res://models/Terrain1/kordon7.obj"
+dest_files=[ "res://.import/kordon7.obj-4439dc78cc2841da932d96a3889cc363.mesh", "res://.import/kordon7.obj-4439dc78cc2841da932d96a3889cc363.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

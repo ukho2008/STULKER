@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://textures/Fire.png" type="Texture" id=1]
+[ext_resource path="res://textures/Fire2.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_specular_mode = 4
+params_blend_mode = 1
+params_billboard_mode = 3
+params_grow = true
+params_grow_amount = 0.0
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
+size = Vector2( 0.7, 0.7 )
+center_offset = Vector3( 0, 0.007, 0 )
+
+[sub_resource type="Curve" id=7]
+max_value = 2.0
+_data = [ Vector2( 0, 1.77727 ), 0.0, -1.09091, 0, 1, Vector2( 1, 0.686364 ), -1.09091, 0.0, 1, 0 ]
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.977539, 0.775971, 0.25584, 1, 0.93457, 0.344988, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_diffuse_mode = 1
+params_specular_mode = 4
+params_blend_mode = 1
+params_billboard_mode = 3
+params_billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+max_value = 2.0
+_data = [ Vector2( 0, 0.622727 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 0.671875, 0.671875, 0.671875, 1, 0.207843, 0.207843, 0.207843, 0.596078 )
+
+[node name="Fire" type="CPUParticles"]
+cast_shadow = 0
+amount = 40
+preprocess = 1.51
+speed_scale = 1.2
+explosiveness = 0.02
+randomness = 0.83
+lifetime_randomness = 0.5
+mesh = SubResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 5, 0 )
+damping = 0.65
+damping_random = 0.79
+scale_amount_random = 0.1
+scale_amount_curve = SubResource( 7 )
+color = Color( 1, 1, 0, 1 )
+color_ramp = SubResource( 3 )
+
+[node name="Smoke" type="CPUParticles" parent="."]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.37778, 0 )
+amount = 40
+lifetime = 3.0
+preprocess = 1.32
+speed_scale = 0.53
+randomness = 0.47
+lifetime_randomness = 0.36
+mesh = SubResource( 9 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, 3, 0 )
+initial_velocity = 0.2
+initial_velocity_random = 0.53
+scale_amount = 5.0
+scale_amount_random = 0.55
+scale_amount_curve = SubResource( 10 )
+color = Color( 0.145098, 0.145098, 0.145098, 0.521569 )
+color_ramp = SubResource( 11 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881151, 0 )
+light_color = Color( 0.9375, 0.629224, 0.490723, 1 )
+light_energy = 2.0
+shadow_enabled = true

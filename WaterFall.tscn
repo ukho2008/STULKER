@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/WaterFall.gdshader" type="Shader" id=1]
+[ext_resource path="res://models/Terrain/WaterFall1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://textures/water2.png" type="Texture" id=3]
+[ext_resource path="res://sounds/waterfall2.wav" type="AudioStream" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/light = Color( 1, 1, 1, 1 )
+shader_param/dark = Color( 0.180392, 0.572549, 0.588235, 1 )
+shader_param/amount = 0.055
+shader_param/speed = 5.0
+shader_param/beer_factor = 0.7
+shader_param/displ_amount = 0.01
+shader_param/water_tex = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_cull_mode = 2
+params_depth_draw_mode = 1
+albedo_color = Color( 1, 1, 1, 0.596078 )
+distance_fade_mode = 3
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 2.0
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+radius = 0.5
+height = 1.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.459091 ), 0.0, 0.540909, 0, 1, Vector2( 1, 1 ), 0.540909, 0.0, 1, 0 ]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.180392, 0.572549, 0.588235, 1, 1, 1, 1, 0.490196 )
+
+[node name="WaterFall" type="Spatial"]
+
+[node name="WaterFall1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.037, 0.732075, 87.5546 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="watersound1" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.06114, 0.452557 )
+stream = ExtResource( 4 )
+unit_db = 20.0
+autoplay = true
+max_distance = 50.0
+emission_angle_enabled = true
+emission_angle_degrees = 69.0
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( 0.825468, 0, 0, 0, 1, 0, 0, 0, 0.748843, -0.358705, -0.776637, 1.60757 )
+amount = 100
+lifetime = 0.5
+preprocess = 1.24
+speed_scale = 0.7
+randomness = 0.5
+lifetime_randomness = 0.34
+mesh = SubResource( 3 )
+emission_shape = 2
+emission_box_extents = Vector3( 3, 1, 1 )
+direction = Vector3( 0, 2, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.3
+angular_velocity = 1.1
+angular_velocity_random = 0.19
+linear_accel = 4.0
+damping = 6.08
+damping_random = 0.24
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 5 )

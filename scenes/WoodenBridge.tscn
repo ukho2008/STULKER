@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://textures/Wood3.png" type="Texture" id=1]
+[ext_resource path="res://models/Terrain/wooden_bridge.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://sounds/river1.wav" type="AudioStream" id=3]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 5, 5, 1 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.02382, 0.182047, 1.28109 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.19714, 0.188719, 1.27524 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.40135, 0.182348, 1.27989 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.00131, 0.144629, 0.054727 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1.17028, 0.154778, 0.0541892 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1.31876, 0.146359, 0.056581 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1.99903, 0.146543, 0.059257 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1.17504, 0.151393, 0.0582423 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 1.31744, 0.148826, 0.0570006 )
+
+[node name="WoodenBridge" type="Spatial"]
+
+[node name="wooden_bridge" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = SubResource( 10 )
+
+[node name="StaticBody" type="StaticBody" parent="wooden_bridge"]
+
+[node name="flooring1" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.3409, 0.792956, -26.651 )
+shape = SubResource( 1 )
+
+[node name="flooring2" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.917359, -0.398061, 0, 0.398061, 0.917359, 0, 0, 0, 1, 92.2951, 0.321582, -26.6534 )
+shape = SubResource( 2 )
+
+[node name="flooring3" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.919135, 0.393942, 0, -0.393942, 0.919135, 0, 0, 0, 1, 98.5798, 0.255195, -26.6534 )
+shape = SubResource( 3 )
+
+[node name="railing1_R" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.14928, 95.3285, 1.66789, -25.5039 )
+shape = SubResource( 4 )
+
+[node name="railing2_R" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.921883, -0.387467, 0, 0.387467, 0.921883, 0, 0, 0, 1.14928, 92.2317, 1.20599, -25.5025 )
+shape = SubResource( 5 )
+
+[node name="railing3_R" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.921253, 0.388963, 0, -0.388963, 0.921253, 0, 0, 0, 1.14928, 98.5833, 1.15656, -25.5039 )
+shape = SubResource( 6 )
+
+[node name="railing1_L" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.10377, 95.3285, 1.66789, -27.7884 )
+shape = SubResource( 7 )
+
+[node name="railing2_L" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.920934, -0.389719, 0, 0.389719, 0.920934, 0, 0, 0, 1.10377, 92.241, 1.21242, -27.7897 )
+shape = SubResource( 8 )
+
+[node name="railing3_L" type="CollisionShape" parent="wooden_bridge/StaticBody"]
+transform = Transform( 0.921253, 0.388963, 0, -0.388963, 0.921253, 0, 0, 0, 1.10377, 98.5833, 1.15656, -27.7884 )
+shape = SubResource( 9 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wooden_bridge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.3264, -0.601624, -26.5578 )
+stream = ExtResource( 3 )
+unit_db = 1.0
+unit_size = 5.0
+autoplay = true
+max_distance = 50.0
+out_of_range_mode = 1
