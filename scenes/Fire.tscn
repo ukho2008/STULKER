@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/Fire.png" type="Texture" id=1]
-[ext_resource path="res://textures/Fire2.png" type="Texture" id=2]
+[ext_resource path="res://textures/Fire3.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -56,12 +56,11 @@ colors = PoolColorArray( 0.671875, 0.671875, 0.671875, 1, 0.207843, 0.207843, 0.
 
 [node name="Fire" type="CPUParticles"]
 cast_shadow = 0
-amount = 40
+amount = 30
 preprocess = 1.51
-speed_scale = 1.2
-explosiveness = 0.02
-randomness = 0.83
-lifetime_randomness = 0.5
+randomness = 0.92
+lifetime_randomness = 0.78
+local_coords = false
 mesh = SubResource( 6 )
 emission_shape = 1
 emission_sphere_radius = 0.3
