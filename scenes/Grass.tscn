@@ -58,5 +58,6 @@ multimesh = SubResource( 7 )
 
 [node name="straw2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.21989, 0 )
+visible = false
 mesh = ExtResource( 7 )
 material/0 = null

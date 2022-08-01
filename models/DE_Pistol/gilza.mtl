@@ -1,0 +1,14 @@
+# Blender 3.2.1 MTL File: 'MakarovPistol1.blend'
+# www.blender.org
+
+newmtl Equip
+Ns 250.000000
+Ka 0.490909 0.490909 0.490909
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /home/ukho/OneDrive/Документы/BlenderDir/textures/pistol_equip.png
+map_Ns /home/ukho/OneDrive/Документы/BlenderDir/textures/pistol_equip_SPEC.png
