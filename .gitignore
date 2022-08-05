@@ -2,7 +2,7 @@
 .import/
 export.cfg
 export_presets.cfg
-
+*.lmbake
 # Imported translations (automatically generated from CSV files)
 *.translation
 
