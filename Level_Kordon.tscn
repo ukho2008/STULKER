@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Fireplace_ON.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Fireplace.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Populus.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Grass.tscn" type="PackedScene" id=6]
+[ext_resource path="res://default_env.tres" type="Environment" id=7]
+[ext_resource path="res://Level_Kordon.lmbake" type="BakedLightmapData" id=8]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=9]
 [ext_resource path="res://models/Terrain/water.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://WaterFall.tscn" type="PackedScene" id=16]
@@ -20,17 +22,17 @@ func _process(_delta):
 		get_tree().quit()
 "
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 17 )
 shader_param/light = Color( 1, 1, 1, 1 )
-shader_param/dark = Color( 0.113725, 0.741176, 0.764706, 1 )
+shader_param/dark = Color( 0.180392, 0.572549, 0.588235, 1 )
 shader_param/amount = 0.055
-shader_param/speed = 4.0
-shader_param/beer_factor = 0.5
-shader_param/displ_amount = 0.0
-shader_param/UV_scale_x = 10.0
-shader_param/UV_scale_y = 10.0
-shader_param/water_speed = 8.0
+shader_param/speed = 5.0
+shader_param/beer_factor = 0.7
+shader_param/displ_amount = 0.01
+shader_param/UV_scale_x = 15.0
+shader_param/UV_scale_y = 15.0
+shader_param/water_speed = 4.0
 shader_param/water_tex = ExtResource( 18 )
 
 [node name="level" type="Spatial"]
@@ -49,9 +51,10 @@ transform = Transform( -3.66572e-07, 0, 2.25, 0, 2.25, 0, -2.25, 0, -3.66572e-07
 [node name="Terrain" parent="." instance=ExtResource( 3 )]
 
 [node name="water" type="MeshInstance" parent="Terrain"]
+generate_lightmap = false
 mesh = ExtResource( 11 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 13 )
+material/0 = SubResource( 2 )
 
 [node name="WaterFall" parent="Terrain" instance=ExtResource( 16 )]
 transform = Transform( 1.10029, 0, -0.715193, 0, 1.0217, 0, 1.1259, 0, 0.698927, 107.654, 4.52744, -128.974 )
@@ -60,16 +63,14 @@ transform = Transform( 1.10029, 0, -0.715193, 0, 1.0217, 0, 1.1259, 0, 0.698927,
 transform = Transform( 1.09397, 0, 0, 0, 1, 0, 0, 0, 1.0647, 96.9252, -0.749248, -87.5319 )
 
 [node name="fireplace_ON" parent="Terrain" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0016, 3.31945, 23.81 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0016, 3.33175, 23.81 )
 
 [node name="Grass" parent="Terrain" instance=ExtResource( 6 )]
 
-[node name="GIProbe" type="GIProbe" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3557, 0 )
-extents = Vector3( 157.803, 25.9956, 157.727 )
-
 [node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.756128, -0.333404, 0.563127, 0, 0.860493, 0.509462, -0.654424, -0.385218, 0.650643, -3.52237, 27.5321, -14.9521 )
+transform = Transform( 0.756128, -0.333404, 0.563127, 0, 0.860493, 0.509462, -0.654424, -0.385218, 0.650643, -3.52237, 14.2957, 0.00615978 )
+light_color = Color( 1, 1, 0.92549, 1 )
+light_energy = 1.119
 shadow_enabled = true
 directional_shadow_split_3 = 0.551
 directional_shadow_blend_splits = true
@@ -140,3 +141,48 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1.20379, 0, 1, 0, -4.37114e-08, 6
 
 [node name="Populus21" parent="Boulevard" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1.4491, 0, 8.74228e-08, 0, -1, 13.9868, 4.22046, 98.8348 )
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.45642, 0 )
+extents = Vector3( 154.193, 18.2739, 153.878 )
+environment_mode = 1
+light_data = ExtResource( 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.8577, 2.0964, -9.04639 )
+extents = Vector3( 11.2124, 4.91638, 87.5171 )
+origin_offset = Vector3( 0.560547, -0.0234375, -3.80859 )
+box_projection = true
+enable_shadows = true
+interior_enable = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2323, 6.74428, -112.564 )
+extents = Vector3( 7.7144, 3, 20.73 )
+box_projection = true
+enable_shadows = true
+interior_enable = true
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 122.094, 8.73388, -131.238 )
+extents = Vector3( 19.3154, 5, 11.8492 )
+box_projection = true
+enable_shadows = true
+interior_enable = true
+
+[node name="ReflectionProbe4" type="ReflectionProbe" parent="."]
+transform = Transform( 0.85004, 0, -0.526718, 0, 1, 0, 0.526718, 0, 0.85004, 71.6663, 1.74767, 94.824 )
+extents = Vector3( 13.7922, 5, 33.9113 )
+box_projection = true
+enable_shadows = true
+interior_enable = true
+
+[node name="ReflectionProbe5" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8225, -1.90395, 131.372 )
+extents = Vector3( 28.3717, 5, 18.5779 )
+box_projection = true
+enable_shadows = true
+interior_enable = true

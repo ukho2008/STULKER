@@ -17,6 +17,7 @@ extents = Vector3( 1.94559, 0.183316, 1.05503 )
 [node name="Stair" type="Spatial"]
 
 [node name="stairs" type="MeshInstance" parent="."]
+use_in_baked_light = true
 mesh = ExtResource( 1 )
 material/0 = null
 

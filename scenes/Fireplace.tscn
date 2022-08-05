@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://models/Fireplace/Fireplace.obj" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Fire.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.472466
+height = 1.06378
+
+[node name="fireplace" type="Spatial"]
+
+[node name="Fireplace2" parent="." instance=ExtResource( 2 )]
+
+[node name="StaticBody" type="StaticBody" parent="Fireplace2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Fireplace2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.379257, 0 )
+shape = SubResource( 5 )
+
+[node name="Fire" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484697, 0 )
+use_in_baked_light = true
+emission_sphere_radius = 0.1

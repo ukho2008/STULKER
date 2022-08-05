@@ -5,13 +5,13 @@
 [ext_resource path="res://textures/water2.png" type="Texture" id=3]
 [ext_resource path="res://sounds/waterfall2.wav" type="AudioStream" id=4]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 1 )
 shader_param/light = Color( 1, 1, 1, 1 )
 shader_param/dark = Color( 0.180392, 0.572549, 0.588235, 1 )
 shader_param/amount = 0.055
 shader_param/speed = 5.0
-shader_param/beer_factor = 0.7
+shader_param/beer_factor = 1.0
 shader_param/displ_amount = 0.01
 shader_param/water_tex = ExtResource( 3 )
 
@@ -44,8 +44,9 @@ colors = PoolColorArray( 0.180392, 0.572549, 0.588235, 1, 1, 1, 1, 0.490196 )
 
 [node name="WaterFall1" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.037, 0.732075, 87.5546 )
+generate_lightmap = false
 mesh = ExtResource( 2 )
-material/0 = SubResource( 1 )
+material/0 = SubResource( 6 )
 
 [node name="watersound1" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.06114, 0.452557 )

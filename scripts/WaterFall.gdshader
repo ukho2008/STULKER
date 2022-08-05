@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, specular_phong, cull_back;
+render_mode blend_mix, specular_phong, cull_disabled;
 
 uniform sampler2D water_tex;
 uniform vec4 light : hint_color = vec4(0.0, 0.2, 1.0, 1.0);

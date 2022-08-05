@@ -1,9 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://models/Player/Player.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://models/Player/Player.material" type="Material" id=2]
-[ext_resource path="res://models/Player/Bag.material" type="Material" id=3]
-[ext_resource path="res://models/Player/Eye.material" type="Material" id=4]
 [ext_resource path="res://models/Player/Walk_Hide.anim" type="Animation" id=5]
 [ext_resource path="res://models/Player/Walk.anim" type="Animation" id=6]
 [ext_resource path="res://models/Player/idle_Hide.anim" type="Animation" id=7]
@@ -252,11 +249,14 @@ bones/26/enabled = true
 bones/26/bound_children = [  ]
 
 [node name="Player" type="MeshInstance" parent="Armature/Skeleton"]
+cast_shadow = 2
+use_in_baked_light = true
+generate_lightmap = false
 mesh = ExtResource( 1 )
 skin = SubResource( 1 )
-material/0 = ExtResource( 2 )
-material/1 = ExtResource( 3 )
-material/2 = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
 
 [node name="Belt" type="BoneAttachment" parent="Armature/Skeleton"]
 transform = Transform( 1, -3.33696e-07, 5.80427e-09, 5.80429e-09, 0.0347773, 0.999395, -3.33696e-07, -0.999395, 0.0347773, 1.01739e-10, 1.02731, -1.3113e-06 )
