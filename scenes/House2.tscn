@@ -1,0 +1,149 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://models/House/HOUSE-1_house_stairs1.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/House/HOUSE-1_roof01.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://models/House/HOUSE-1_house02.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://models/House/HOUSE-1_r_short1.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://models/House/HOUSE-1_window2.mesh" type="ArrayMesh" id=5]
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.458997, 0.520014, 0.0568524 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.464492, 0.41755, 0.0582549 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.40002, 0.510161, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.92582, 0.427298, 1 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.99445, 0.502185, 3.00056 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.211999, 1.47124, 2.83296 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.210362, 1.44888, 1.84072 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.206361, 1.44682, 0.474979 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.206622, 0.366959, 0.507145 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 2.84656, 1.45564, 0.191962 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 2.85138, 1.48228, 0.202363 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 2.86255, 0.131202, 2.85027 )
+
+[node name="House1" type="Spatial"]
+
+[node name="box" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="top" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="window1" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="window2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.75754 )
+use_in_baked_light = true
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="window3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.74469, 0, -1.19974e-07 )
+use_in_baked_light = true
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="window4" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="house_stairs" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36825, 0, -1.3861 )
+use_in_baked_light = true
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="railings" type="MeshInstance" parent="house_stairs"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.237695, 0.854693, -0.844553 )
+use_in_baked_light = true
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="railings_short" type="StaticBody" parent="house_stairs/railings"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237695, -0.854693, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="house_stairs/railings/railings_short"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.861525, 0 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="house_stairs/railings/railings_short"]
+transform = Transform( 0.831179, 0.556006, 0, -0.556006, 0.831179, 0, 0, 0, 1, 0.617503, 0.767093, 0 )
+shape = SubResource( 10 )
+
+[node name="stairs" type="StaticBody" parent="house_stairs"]
+
+[node name="CollisionShape" type="CollisionShape" parent="house_stairs/stairs"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0111523, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="house_stairs/stairs"]
+transform = Transform( 0.833722, 0.552184, 0, -0.552184, 0.833722, 0, 0, 0, 1, 0.928234, -0.359835, 0 )
+shape = SubResource( 12 )
+
+[node name="house_colli" type="StaticBody" parent="."]
+
+[node name="floor" type="CollisionShape" parent="house_colli"]
+shape = SubResource( 1 )
+
+[node name="wall1" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65527, 1.7736, 0.00936079 )
+shape = SubResource( 2 )
+
+[node name="wall2" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64759, 1.75982, 0.962783 )
+shape = SubResource( 3 )
+
+[node name="wall3" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65133, 1.77033, -2.34225 )
+shape = SubResource( 4 )
+
+[node name="wall4" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64837, 2.86685, -1.39593 )
+shape = SubResource( 5 )
+
+[node name="wall5" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76558, -2.62784 )
+shape = SubResource( 6 )
+
+[node name="wall6" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77304, 2.64712 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="house_colli"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10327, 0 )
+shape = SubResource( 8 )

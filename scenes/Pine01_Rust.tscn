@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://models/Tree/Pine2.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/Tree/Leaf004.material" type="Material" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.576643
+height = 9.41627
+
+[node name="Pine01" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31073, 0 )
+shape = SubResource( 1 )

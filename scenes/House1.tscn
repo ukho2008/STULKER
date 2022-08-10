@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://models/House/HOUSE-1_roof02_detail3.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/House/HOUSE-1_roof02.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://models/House/HOUSE-1_house01.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://models/House/HOUSE-1_window1.mesh" type="ArrayMesh" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.99445, 0.502185, 3.00056 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.211999, 1.47124, 2.83296 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.210362, 1.44888, 1.84072 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.206361, 1.44682, 0.474979 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.206622, 0.366959, 0.507145 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 2.84656, 1.45564, 0.191962 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 2.85138, 1.48228, 0.202363 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 2.86255, 0.131202, 2.85027 )
+
+[node name="House1" type="Spatial"]
+
+[node name="box" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+
+[node name="top1" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="top2" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="window" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="window2" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 4 )
+skeleton = NodePath("../window")
+material/0 = null
+
+[node name="window3" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.40496e-07, 0, -2.75096 )
+use_in_baked_light = true
+mesh = ExtResource( 4 )
+skeleton = NodePath("../window")
+material/0 = null
+
+[node name="window4" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.75212, 0, -1.20299e-07 )
+use_in_baked_light = true
+mesh = ExtResource( 4 )
+skeleton = NodePath("../window")
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="floor" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )
+
+[node name="wall1" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65527, 1.7736, 0.00936079 )
+shape = SubResource( 2 )
+
+[node name="wall2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64759, 1.75982, -0.98288 )
+shape = SubResource( 3 )
+
+[node name="wall3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65133, 1.77033, 2.35224 )
+shape = SubResource( 4 )
+
+[node name="wall4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64837, 2.86685, 1.36264 )
+shape = SubResource( 5 )
+
+[node name="wall5" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76558, -2.62784 )
+shape = SubResource( 6 )
+
+[node name="wall6" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77304, 2.64712 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10327, 0 )
+shape = SubResource( 8 )
