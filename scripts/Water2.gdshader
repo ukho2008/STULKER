@@ -8,9 +8,9 @@ uniform float amount : hint_range(0.01, 1.5) = 0.8;
 uniform float speed : hint_range(0.1, 10.0) = 1.0;
 uniform float beer_factor = 0.2;
 uniform float displ_amount = 0.02;
-uniform float UV_scale_x : hint_range(1f, 100f) = 1;
-uniform float UV_scale_y : hint_range(1f, 100f) = 1;
-uniform float water_speed : hint_range(1f, 100f) = 1;
+uniform float UV_scale_x : hint_range(1.0, 100.0) = 1;
+uniform float UV_scale_y : hint_range(1.0, 100.0) = 1;
+uniform float water_speed : hint_range(1.0, 100.0) = 1;
 
 
 float generateOffset(float x, float z, float val1, float val2, float time){
@@ -42,10 +42,10 @@ void fragment(){
 	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 	
 	vec2 displ = texture(water_tex, UV - TIME/water_speed).xy;
-	displ = (displ*2f - 1f) * displ_amount;
+	displ = (displ*2.0 - 1.0) * displ_amount;
 	
 	float noise = texture(water_tex, vec2((UV.x*UV_scale_x), (UV.y*UV_scale_y) - TIME/water_speed) + displ).x;
-	noise = floor(noise * 4f) / 4f;
+	noise = floor(noise * 4.0) / 4.0;
 	
 	vec4 col = mix(light, dark, noise);
 	

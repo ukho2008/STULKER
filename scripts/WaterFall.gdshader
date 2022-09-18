@@ -39,10 +39,10 @@ void fragment(){
 	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 	
 	vec2 displ = texture(water_tex, UV - TIME).xy;
-	displ = (displ*2f - 1f) * displ_amount;
+	displ = (displ*2.0 - 1.0) * displ_amount;
 	
-	float noise = texture(water_tex, vec2(UV.x, UV.y - TIME/2f) + displ).x;
-	noise = floor(noise * 4f) / 4f;
+	float noise = texture(water_tex, vec2(UV.x, UV.y - TIME/2.0) + displ).x;
+	noise = floor(noise * 4.0) / 4.0;
 	
 	vec4 col = mix(light, dark, noise);
 	
